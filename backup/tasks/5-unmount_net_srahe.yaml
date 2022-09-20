@@ -1,0 +1,11 @@
+---
+#1 размонтируем сетевой диск
+- name: "mount share"
+  ansible.posix.mount:
+    state:   "unmounted"
+    fstype:  "cifs"
+    name:    "{{ mountpoint }}"
+    src:     "{{ uri }}"
+    opts:    "credentials=/etc/credentials_backup,file_mode=0644,dir_mode=0755,gid=root,uid=root"
+    boot:    "no"
+

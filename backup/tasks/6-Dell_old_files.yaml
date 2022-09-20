@@ -1,0 +1,14 @@
+---
+# Получить список файлов в каталоге {{dest}} и записать их в переменную {{founds}}
+- name: "Get list of backup files"
+  find:
+    paths: "{{ dest }}"
+    file_type: file
+  register: founds
+
+# Удалить старный файлы. Задать количество в [8:]
+- name: "Delete last Copies"
+  file:
+    path: "{{ item }}"
+    state: absent
+  loop: "{{ (founds.files | sort(attribute='mtime', reverse=True) | map(attribute='path') | list )[8:]}}"

@@ -1,0 +1,6 @@
+---
+#1 Soft для монтирования сетевого диска
+- name:  Install packages
+  ansible.builtin.apt:
+    name:  cifs-utils
+    state: present

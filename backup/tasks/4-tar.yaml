@@ -1,0 +1,12 @@
+---
+# Занести текущее время в переменную  bkp_date_time
+- set_fact:
+    bkp_date_time: "{{ ansible_date_time.date }}--{{ ansible_date_time.hour }}-{{ ansible_date_time.minute }}"
+
+# Созддать архив
+- name: Create a tar.gz archive
+  community.general.archive:
+    path: "{{ mountpoint }}"
+    dest: "{{ dest }}/{{ tar_name }}_{{ bkp_date_time }}.tar.gz"
+    format: gz
+    force_archive: true

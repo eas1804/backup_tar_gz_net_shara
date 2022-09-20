@@ -1,0 +1,8 @@
+---
+# tasks file for backup
+- include_tasks: 1-install_soft.yaml
+- include_tasks: 2-check_folder_exist.yaml
+- include_tasks: 3-mount_net_srahe.yaml
+- include_tasks: 4-tar.yaml
+- include_tasks: 5-unmount_net_srahe.yaml
+- include_tasks: 6-Dell_old_files.yaml

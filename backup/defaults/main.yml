@@ -1,0 +1,17 @@
+---
+# defaults file for backup
+
+# 1. Куда монтировать "/share"
+mountpoint: "/mnt/windows" 
+
+# 2. Что монтировать "//windows-pc/share"
+uri: "//192.168.18.2/common_folder"
+
+# 3. Куда архивировать
+dest: "/mnt/disk2/backup/connon_folder"
+
+# 4. Имя архива
+tar_name: "common_files"
+
+# 5. Сколько файлов архива хранить - зать в последней строке. В єтом примере - 8
+# loop: "{{ (founds.files | sort(attribute='mtime', reverse=True) | map(attribute='path') | list )[8:]}}"
